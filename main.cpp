@@ -7,7 +7,7 @@
 //c++ 11
 namespace fs = std::filesystem;
 
-std::wstring GetDefaultLogFile()
+std::string GetDefaultLogFile()
 {
     fs::path logPath = fs::temp_directory_path();
     logPath = logPath.parent_path().parent_path();
@@ -25,11 +25,11 @@ std::wstring GetDefaultLogFile()
     std::strftime(timebuffer, 80, "GGP-%Y-%m-%d.txt", &tminfo);
     logPath.append(timebuffer);
 
-    return logPath.wstring();
+    return logPath.string();
 }
 
 int main()
 {
-  std::wcout<<GetDefaultLogFile()<<std::endl;
+  std::cout<<GetDefaultLogFile()<<std::endl;
   return 1;
 }
