@@ -19,7 +19,7 @@ std::wstring GetDefaultLogFile()
     auto now = std::chrono::system_clock::now();
     auto in_time_t = std::chrono::system_clock::to_time_t(now);
     struct tm tminfo;
-    localtime_r(&tminfo, &in_time_t);
+    tminfo = *std::localtime(&in_time_t);
     char timebuffer[80];
     std::strftime(timebuffer, 80, "GGP-%Y-%m-%d.txt", &tminfo);
     logPath.append(timebuffer);
