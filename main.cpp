@@ -1,3 +1,4 @@
+#pragma warning(disable:4996)
 #include <string>
 #include <iostream>
 #include <chrono>
@@ -24,7 +25,7 @@ std::wstring GetDefaultLogFile()
     std::strftime(timebuffer, 80, "GGP-%Y-%m-%d.txt", &tminfo);
     logPath.append(timebuffer);
 
-    return logPath.c_str();
+    return logPath.wstring();
 }
 
 int main()
