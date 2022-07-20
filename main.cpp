@@ -4,7 +4,7 @@
 #include <ctime>
 #include <filesystem>
 //c++ 11
-namespace fs = std::experimental::filesystem;
+namespace fs = std::filesystem;
 
 std::wstring GetDefaultLogFile()
 {
@@ -19,7 +19,7 @@ std::wstring GetDefaultLogFile()
     auto now = std::chrono::system_clock::now();
     auto in_time_t = std::chrono::system_clock::to_time_t(now);
     struct tm tminfo;
-    localtime_s(&tminfo, &in_time_t);
+    localtime_r(&tminfo, &in_time_t);
     char timebuffer[80];
     std::strftime(timebuffer, 80, "GGP-%Y-%m-%d.txt", &tminfo);
     logPath.append(timebuffer);
